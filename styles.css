@@ -18,6 +18,163 @@ body::-webkit-scrollbar {
     height: 0;
 }
 
+/* ================= EXPERIENCE SECTION ================= */
+
+/* ================= EXPERIENCE ================= */
+#experience {
+    display: block;     
+}
+.experience-container {
+    display: grid;
+    /* grid-template-columns: repeat(2, minmax(420px, 1fr));  */
+    grid-template-columns: repeat(auto-fit, minmax(420px, 550px));
+    gap: 6rem;
+
+    max-width: 92vw;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+
+
+.experience-card {
+    width: 100%;
+    max-width: 520px;   
+    min-height: 34rem;
+    margin: 0 auto; 
+
+    padding: 2rem;
+    border-radius: 1.8rem;
+
+    background: linear-gradient(135deg, #ece1f1, #f1e5fb);
+    box-shadow: 0 1.2rem 3rem rgba(0,0,0,0.15);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+
+
+
+
+
+
+/* Slideshow */
+.experience-slideshow {
+    position: relative;
+    width: 100%;
+    height: 80%;              /* 🔥 as you asked */
+    border-radius: 1.4rem;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+}
+
+
+.exp-slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;        /* 🔥 fill */
+    object-position: center;
+
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.exp-slide.active {
+    opacity: 1;               /* 🔥 always visible */
+}
+
+
+.experience-card:hover {
+    transform: translateY(-0.5rem);
+}
+
+
+.experience-card h3 {
+    color: #111;
+    margin: 1rem 0;
+}
+
+/* Button */
+.see-more-btn {
+    background: #7b4dbb;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.see-more-btn:hover {
+    background: #5a2c83;
+}
+
+/* ================= MODAL ================= */
+
+.experience-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    max-width: 700px;
+    width: 90%;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    position: relative;
+    animation: scaleUp 0.3s ease;
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-content img {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.modal-text h3 {
+    color: #4b1f7a;
+    margin-bottom: 0.6rem;
+}
+
+.modal-text ul {
+    text-align: left;
+    padding-left: 1.2rem;
+}
+
+.modal-text ul li {
+    margin-bottom: 0.5rem;
+    color: #111;
+}
+
+/* experience close */
+
 /* Header */
 header {
     padding: 1rem ;
@@ -697,6 +854,7 @@ section {
     text-decoration: underline;
 }
 
+
 /* Media Queries for Responsive Design */
 @media (max-width: 1024px) {
     .home-content {
@@ -725,6 +883,17 @@ section {
         font-size: 1.2rem;
     }
 }
+@media (max-width: 900px) {
+    .experience-container {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-card {
+        max-width: 90vw;
+    }
+}
+
+
 
 @media (max-width: 600px) {
     header {

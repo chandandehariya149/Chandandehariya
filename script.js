@@ -7,6 +7,64 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+// Experience "See More" click
+/* ========== EXPERIENCE SLIDESHOW ========== */
+document.querySelectorAll('.experience-card').forEach(card => {
+    let index = 0;
+    const slides = card.querySelectorAll('.exp-slide');
+
+    setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+    }, 3000);
+});
+
+/* ========== EXPERIENCE MODAL DATA ========== */
+const experienceData = {
+    algonix: {
+        name: "Algonix",
+        image: "data_port/ep4.jpg",
+        details: [
+            "Role: SWE intern - 2026",
+            "Duration: Jan 2026 – Present",
+           
+        ]
+    }
+};
+
+/* ========== MODAL LOGIC ========== */
+const modal = document.getElementById("experienceModal");
+const modalImg = document.getElementById("modalImage");
+const modalName = document.getElementById("modalCompanyName");
+const modalDetails = document.getElementById("modalDetails");
+
+document.querySelectorAll('.see-more-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const card = btn.closest('.experience-card');
+        const key = card.dataset.company;
+        const data = experienceData[key];
+
+        modalImg.src = data.image;
+        modalName.innerText = data.name;
+        modalDetails.innerHTML = data.details.map(d => `<li>${d}</li>`).join("");
+
+        modal.style.display = "flex";
+    });
+});
+
+document.querySelector('.close-modal').addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
+modal.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = "none";
+});
+
+
+//experience end
+
+
 // Smooth scrolling (close mobile menu on link click)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
